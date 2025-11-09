@@ -1,43 +1,75 @@
-# 🚗 Auto Insurance Policy Assistant (AIPA)
+# 🛡️ Intelligent Insurance Assistant System (AIPA + Renewal Prediction)
 
-AIPA is an **AI-powered insurance assistant** designed to simplify understanding and comparison of auto insurance policy documents. The system uses **Generative AI (FLAN-T5)** to summarize lengthy insurance policies into easy-to-understand text and provides **side-by-side policy comparison** to help users make informed decisions quickly and confidently.
+This project integrates **Generative AI** and **Machine Learning** to assist in auto insurance decision-making through:
+1. **Policy Summarization**
+2. **Quote Comparison**
+3. **Insurance Policy Renewal Prediction**
 
----
-
-## 🌟 Key Features
-
-| Feature | Description |
-|--------|-------------|
-| **Policy Summarization** | Upload any auto insurance policy PDF and get a short, clear summary of main coverage, exclusions, and claim conditions. |
-| **Quote Comparison** | Upload 2 or more policy PDFs and see a structured comparison of differences in coverage, add-ons, and important terms. |
-| **Interactive Web UI** | Built using Streamlit for a clean, modern, and user-friendly interface. |
+The solution helps users **quickly understand policies**, compare multiple insurance plans, and **predict whether a customer is likely to renew** their insurance based on behavioral and financial indicators.
 
 ---
 
-## 🧠 Project Motivation
+## 🌟 Key Functional Modules
 
-Insurance policy documents are often long, complex, and filled with legal language.  
-Many customers skip reading or misunderstand the terms — leading to poor financial decisions.
+| Module | Description | Technology Used |
+|--------|-------------|----------------|
+| **Policy Summarization** | Converts lengthy policy documents into short, clear summaries. | FLAN-T5, Transformers, PyMuPDF |
+| **Quote Comparison** | Compares 2+ policy PDFs and highlights key differences. | LangChain, Custom Comparator |
+| **Renewal Prediction Model** | Predicts probability of customer renewing their insurance policy. | Random Forest / Logistic Regression, Pandas, Scikit-Learn |
 
-**AIPA solves this by:**
-- Translating complex legal text into simple language
-- Highlighting differences across multiple insurance policies
-- Saving time and improving clarity
+---
+
+## 🎯 Problem Solved
+Insurance documents are **long, repetitive, and legally complex**.  
+Customers often **do not understand** what they are paying for and what is covered.  
+Additionally, insurance providers need models to **predict customer churn/renewal**.
+
+This project provides:
+- Easy-to-read policy summaries
+- Clear comparison between quotes
+- Data-driven renewal decision prediction
+
+---
+
+## 🧠 System Architecture
+
+      ┌──────────────────────────┐
+      │    Streamlit Web UI      │
+      └─────────────┬────────────┘
+                    │
+  ┌─────────────────┴──────────────────┐
+  │             PDF Reader             │
+  └─────────────────┬──────────────────┘
+                    │ Extracted Text
+                    ▼
+       ┌─────────────────────────┐
+       │   FLAN-T5 Summarizer    │
+       └───────────┬─────────────┘
+                   │ Summarized Output
+                   ▼
+    ┌─────────────────────────────────┐
+    │        Quote Comparison          │
+    └─────────────────────────────────┘
+
+    ┌─────────────────────────────────┐
+    │      Renewal Prediction ML      │
+    │ (Random Forest / Logistic Reg.) │
+    └─────────────────────────────────┘
 
 ---
 
 ## 🧰 Technology Stack
 
-| Layer | Technology Used | Purpose |
-|------|-----------------|---------|
-| Programming Language | Python | Core backend + logic |
-| Summarization Model | **FLAN-T5 (HuggingFace)** | Generates short policy summaries |
-| NLP Pipeline | LangChain | Enables structured reasoning and workflow | 
-| PDF Processing | PyMuPDF | Extracts clean text from PDFs |
-| UI Framework | Streamlit | User-friendly web application |
-| Deployment | Cloudflared / Ngrok | Public access without server hosting |
+| Layer | Technology Used |
+|------|----------------|
+| Programming | Python |
+| Summarization Model | FLAN-T5 |
+| Comparison Logic | LangChain + Rule Based |
+| ML Model for Renewal | Logistic Regression / Random Forest |
+| Data Processing | Pandas, NumPy |
+| Visualization | Streamlit UI |
+| Deployment | Cloudflared / Ngrok Tunnel |
+| PDF Text Extraction | PyMuPDF |
 
 ---
-
-## 🏗️ System Architecture
 

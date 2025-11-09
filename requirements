@@ -1,0 +1,6 @@
+streamlit
+transformers
+langchain
+PyMuPDF
+sentencepiece
+torch
